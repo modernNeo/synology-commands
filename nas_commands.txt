@@ -1,0 +1,94 @@
+
+
+
+2018-Dec-08 04:55:49 AM jace:jace_arch/home/jace
+ $ sudo pacman -S nfs-utils
+resolving dependencies...
+looking for conflicting packages...
+
+Packages (5) ding-libs-0.6.1-2  gssproxy-0.8.0-1  nfsidmap-2.3.3-1  rpcbind-1.2.5-2  nfs-utils-2.3.3-1
+
+Total Download Size:   0.56 MiB
+Total Installed Size:  2.57 MiB
+
+:: Proceed with installation? [Y/n] y
+:: Retrieving packages...
+ rpcbind-1.2.5-2-x86_64                   36.0 KiB  78.2K/s 00:00 [####################################] 100%
+ nfsidmap-2.3.3-1-x86_64                  44.1 KiB   281K/s 00:00 [####################################] 100%
+ ding-libs-0.6.1-2-x86_64                119.4 KiB   408K/s 00:00 [####################################] 100%
+ gssproxy-0.8.0-1-x86_64                  84.6 KiB   900K/s 00:00 [####################################] 100%
+ nfs-utils-2.3.3-1-x86_64                293.4 KiB  1099K/s 00:00 [####################################] 100%
+(5/5) checking keys in keyring                                    [####################################] 100%
+(5/5) checking package integrity                                  [####################################] 100%
+(5/5) loading package files                                       [####################################] 100%
+(5/5) checking for file conflicts                                 [####################################] 100%
+(5/5) checking available disk space                               [####################################] 100%
+:: Processing package changes...
+(1/5) installing rpcbind                                          [####################################] 100%
+(2/5) installing nfsidmap                                         [####################################] 100%
+(3/5) installing ding-libs                                        [####################################] 100%
+(4/5) installing gssproxy                                         [####################################] 100%
+(5/5) installing nfs-utils                                        [####################################] 100%
+Optional dependencies for nfs-utils
+    sqlite: for nfsdcltrack usage [installed]
+    python: for nfsiostat and mountstats usage [installed]
+:: Running post-transaction hooks...
+(1/4) Reloading system manager configuration...
+(2/4) Creating system user accounts...
+(3/4) Creating temporary files...
+(4/4) Arming ConditionNeedsUpdate...
+
+2018-Dec-08 04:58:25 AM jace:jace_arch/home/jace
+ $ showmount -e 192.168.1.64
+Export list for 192.168.1.64:
+/volumeUSB2/usbshare jace-cloud.telus
+
+2018-Dec-08 05:17:28 AM jace:jace_arch/home/jace
+ $ ping jace-cloud
+ping: jace-cloud: No address associated with hostname
+2018-Dec-08 05:18:42 AM jace:jace_arch/home/jace
+ $ sudo ip a s
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+2: enp3s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 4c:cc:6a:6c:0c:f5 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.65/24 brd 192.168.1.255 scope global dynamic noprefixroute enp3s0
+       valid_lft 68458sec preferred_lft 68458sec
+5: tun0: <POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UNKNOWN group default qlen 100
+    link/none 
+    inet 10.33.11.6 peer 10.33.11.5/32 scope global tun0
+       valid_lft forever preferred_lft forever
+2018-Dec-08 05:19:59 AM jace:jace_arch/home/jace
+ $ sudo ip -6 r s
+2018-Dec-08 05:20:16 AM jace:jace_arch/home/jace
+ $ ping jace-cloud
+PING jace-cloud.telus (192.168.1.64) 56(84) bytes of data.
+64 bytes from 192.168.1.64 (192.168.1.64): icmp_seq=1 ttl=64 time=0.255 ms
+64 bytes from 192.168.1.64 (192.168.1.64): icmp_seq=2 ttl=64 time=0.290 ms
+^C
+--- jace-cloud.telus ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1ms
+rtt min/avg/max/mdev = 0.255/0.272/0.290/0.024 ms
+2018-Dec-08 05:21:15 AM jace:jace_arch/home/jace
+ $ showmount -e jace-cloud
+Export list for jace-cloud:
+/volumeUSB2/usbshare jace-cloud.telus
+
+2018-Dec-08 05:26:02 AM jace:jace_arch/home/jace
+ $ showmount -e jace-cloud
+Export list for jace-cloud:
+/volume1/NAS_Documents jace_arch.telus
+/volumeUSB2/usbshare   jace-cloud.telus
+2018-Dec-08 05:26:04 AM jace:jace_arch/home/jace
+
+2018-Dec-08 05:27:34 AM jace:jace_arch/home/jace
+ $ showmount -e jace-cloud
+Export list for jace-cloud:
+/volumeUSB1/usbshare   jace_arch.telus
+/volumeUSB4/usbshare   jace_arch.telus
+/volume1/NAS_Documents jace_arch.telus
+/volumeUSB2/usbshare   jace-cloud.telus
+2018-Dec-08 05:29:52 AM jace:jace_arch/home/jace
+ $ sudo nmap -v -A -sP 192.168.1.0/24
