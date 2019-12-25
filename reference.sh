@@ -11,12 +11,9 @@ dav://jacemanshadi.synology.me:5005 -> HTTP
 da6://jacemanshadi.synology.me:5006 -> HTTPS
 
 
- 1554  sudo showmount jace-cloud -e
- 1562  sudo mount -t nfs -o gid=1000,uid=1000 jace-cloud.local:/volumeUSB1/usbshare /home/jace/Jace_Docs
- 1563  man mount
- 1565  sudo mount -t nfs  jace-cloud.local:/volumeUSB1/usbshare /home/jace/Jace_Docs
- 1567  sudo umount Jace_Docs
- 1569  sudo mount -t nfs -o gid=1000,uid=1000 jace-cloud.local:/volumeUSB1/usbshare /home/jace/Jace_Docs
- 1570  sudo mount -t nfs -o nfsvers=4.1,gid=1000,uid=1000 jace-cloud.local:/volumeUSB1/usbshare /home/jace/Jace_Docs
- 1571  sudo mount -t nfs -o nfsvers=4.1 jace-cloud.local:/volumeUSB1/usbshare /home/jace/Jace_Docs
-
+```shell
+sudo showmount jace-cloud.local -e
+sudo mount -t nfs  jace-cloud.local:/volumeUSB1/usbshare /home/jace/Jace_Docs
+sudo mount -t nfs  jace-cloud.local:/volumeUSB4/usbshare /home/jace/JACE_500GB
+sudo mount -t nfs  jace-cloud.local:/volume1/NAS_Documents /home/jace/NAS_Documents
+```
